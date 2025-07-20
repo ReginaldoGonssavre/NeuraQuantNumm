@@ -22,5 +22,21 @@ def ion_tunneling(energy, barrier_height, barrier_width, mass=9.109e-31): # mass
 
     return tunneling_probability
 
-def microtubule_dynamics():
-    pass
+def microtubule_dynamics(num_tubulins=3):
+    """Simulates basic quantum coherence in a simplified microtubule model.
+
+    Args:
+        num_tubulins (int): Number of tubulin-like units (qubits) in the simulation.
+
+    Returns:
+        dict: Simulated coherence data.
+    """
+    # Placeholder for quantum coherence simulation
+    # In a real scenario, this would involve more complex quantum mechanics
+    coherence_data = {
+        "num_tubulins": num_tubulins,
+        "coherence_factor": np.random.rand(), # Random value for demonstration
+        "entanglement_measure": np.random.rand() # Random value for demonstration
+    }
+    print(f"Simulando dinâmica de microtúbulos: {coherence_data}")
+    return coherence_data
