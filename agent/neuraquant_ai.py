@@ -44,12 +44,10 @@ class NeuraquantAIV2:
     def execute_phase2(self):
         """Simulação de coerência em microtúbulos"""
         logging.info("Executando Fase 2: Simulação de coerência em microtúbulos.")
-        # Simulação de dinâmica de microtúbulos
         microtubule_coherence = microtubule_dynamics(num_tubulins=4)
         self.results['phase2_microtubule_coherence'] = microtubule_coherence
         logging.info(f"Coerência de Microtúbulos Simulada: {microtubule_coherence}")
 
-        # Simulação de circuitos quânticos com Qiskit
         qiskit_sim_results = qiskit_circuits(num_qubits=2, num_bits=2)
         self.results['phase2_qiskit_simulation'] = qiskit_sim_results
         logging.info(f"Resultados da Simulação Qiskit: {qiskit_sim_results}")
@@ -64,12 +62,22 @@ class NeuraquantAIV2:
 
     def run_project(self):
         """Fluxo principal de execução"""
-        self.execute_phase(1)  # Modelagem
-        self.execute_phase(2)  # Simulação
-        self.execute_phase(3)  # Validação
-        self.generate_outputs()  # Patentes/publicações
+        self.execute_phase(1)
+        self.execute_phase(2)
+        self.execute_phase(3)
+        self.generate_outputs()
 
     def generate_outputs(self):
         """Geração automática de resultados científicos"""
         logging.info("Gerando saídas científicas.")
+        output_filename = f"neuraquant_results_{self.start_time}.json"
+        output_path = os.path.join(os.getcwd(), output_filename)
+
+        try:
+            with open(output_path, 'w') as f:
+                json.dump(self.results, f, indent=4)
+            logging.info(f"Resultados salvos em: {output_path}")
+        except Exception as e:
+            logging.error(f"Erro ao salvar resultados: {e}")
+
         logging.info(f"Resultados do Projeto: {self.results}")
