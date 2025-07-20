@@ -4,6 +4,8 @@ import logging
 from datetime import datetime
 from src.modeling import ion_tunneling, microtubule_dynamics
 from src.simulation import qiskit_circuits, azure_quantum
+from agent.patent_handler import PatentHandler
+from agent.lab_integration import LabIntegration
 
 class NeuraquantAIV2:
     """Agente autônomo com gestão completa do projeto"""
@@ -12,6 +14,8 @@ class NeuraquantAIV2:
         self.start_time = datetime.now().strftime("%Y%m%d_%H%M%S")
         self.results = {}
         self.setup_logging()
+        self.patent_agent = PatentHandler()
+        self.lab_agent = LabIntegration()
 
     def setup_logging(self):
         """Configura sistema de logs para auditoria"""
@@ -60,6 +64,13 @@ class NeuraquantAIV2:
         self.results['phase3_experimental_results'] = experimental_results
         logging.info(f"Resultados Experimentais Simulados: {experimental_results}")
 
+        # Exemplo de interação com o agente de laboratório
+        lab_connection_status = self.lab_agent.connect_to_lab("QuantumLab_A")
+        logging.info(f"Status da Conexão com Laboratório: {lab_connection_status}")
+        experiment_run_results = self.lab_agent.run_experiment({"type": "RMN", "sample": "neural_tissue"})
+        self.results['phase3_lab_experiment_results'] = experiment_run_results
+        logging.info(f"Resultados de Experimento de Laboratório: {experiment_run_results}")
+
     def run_project(self):
         """Fluxo principal de execução"""
         self.execute_phase(1)
@@ -79,5 +90,10 @@ class NeuraquantAIV2:
             logging.info(f"Resultados salvos em: {output_path}")
         except Exception as e:
             logging.error(f"Erro ao salvar resultados: {e}")
+
+        # Exemplo de interação com o agente de patentes
+        patent_status = self.patent_agent.file_patent(self.results)
+        self.results['patent_filing_status'] = patent_status
+        logging.info(f"Status de Submissão de Patente: {patent_status}")
 
         logging.info(f"Resultados do Projeto: {self.results}")
