@@ -3,6 +3,7 @@ from qiskit.visualization import plot_histogram
 
 def qiskit_circuits(num_qubits=2, num_bits=2):
     """Creates and simulates a basic quantum circuit using Qiskit.
+    This version includes a simple entanglement demonstration.
 
     Args:
         num_qubits (int): Number of qubits in the circuit.
@@ -19,7 +20,7 @@ def qiskit_circuits(num_qubits=2, num_bits=2):
 
     # Apply CNOT gates for entanglement (example for 2 qubits)
     if num_qubits >= 2:
-        qc.cx(0, 1)
+        qc.cx(0, 1) # Entangle qubit 0 and 1
 
     # Measure all qubits
     qc.measure(range(num_qubits), range(num_bits))
@@ -35,6 +36,7 @@ def qiskit_circuits(num_qubits=2, num_bits=2):
 
 def azure_quantum(circuit_data):
     """Simulates interaction with Azure Quantum for experimental validation.
+    This version provides more detailed simulated RMN-like results.
 
     Args:
         circuit_data (dict): Placeholder for quantum circuit data to be sent.
@@ -43,14 +45,15 @@ def azure_quantum(circuit_data):
         dict: Simulated experimental results.
     """
     print(f"Simulando envio de dados para Azure Quantum: {circuit_data}")
-    # Placeholder para resultados de RMN simulada
+    # More detailed placeholder for simulated RMN results
     simulated_results = {
-        "experiment_id": "exp_AZQ_001",
-        "measurement_data": {
-            "qubit_0_state": [0.9, 0.1], # Probabilidade de |0> e |1>
-            "qubit_1_state": [0.2, 0.8]
+        "experiment_id": "exp_AZQ_002",
+        "protocol_type": "simulated_NMR",
+        "qubit_states_distribution": {
+            "00": 0.25, "01": 0.25, "10": 0.25, "11": 0.25 # Example for 2 qubits
         },
-        "protocol_status": "completed",
-        "notes": "Simulação básica de RMN para validação."
+        "coherence_time_ms": np.random.uniform(10, 100), # Simulated coherence time
+        "fidelity": np.random.uniform(0.8, 0.99), # Simulated fidelity
+        "notes": "Simulação aprimorada de RMN para validação experimental."
     }
     return simulated_results

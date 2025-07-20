@@ -1,7 +1,10 @@
 import numpy as np
 
-def ion_tunneling(energy, barrier_height, barrier_width, mass=9.109e-31): # mass of electron as default, can be changed for ions
+def ion_tunneling(energy, barrier_height, barrier_width, mass=9.109e-31):
     """Calculates the quantum tunneling probability through a rectangular potential barrier.
+    
+    Note: For real-world scenarios, more complex barrier shapes and non-linear
+    Schrödinger equations would be considered, potentially involving numerical methods.
 
     Args:
         energy (float): Energy of the particle (Joule).
@@ -24,19 +27,25 @@ def ion_tunneling(energy, barrier_height, barrier_width, mass=9.109e-31): # mass
 
 def microtubule_dynamics(num_tubulins=3):
     """Simulates basic quantum coherence in a simplified microtubule model.
+    Returns a simulated quantum state representation.
 
     Args:
         num_tubulins (int): Number of tubulin-like units (qubits) in the simulation.
 
     Returns:
-        dict: Simulated coherence data.
+        dict: Simulated quantum state data (e.g., superposition, entanglement).
     """
-    # Placeholder for quantum coherence simulation
-    # In a real scenario, this would involve more complex quantum mechanics
-    coherence_data = {
+    # Simulate a superposition state for each tubulin
+    superposition_states = [{"0": np.random.rand(), "1": np.random.rand()} for _ in range(num_tubulins)]
+    
+    # Simulate a basic entanglement measure (placeholder)
+    entanglement_measure = np.random.rand()
+
+    simulated_quantum_state = {
         "num_tubulins": num_tubulins,
-        "coherence_factor": np.random.rand(), # Random value for demonstration
-        "entanglement_measure": np.random.rand() # Random value for demonstration
+        "superposition_states": superposition_states,
+        "entanglement_measure": entanglement_measure,
+        "notes": "Simplified quantum state representation for microtubule dynamics."
     }
-    print(f"Simulando dinâmica de microtúbulos: {coherence_data}")
-    return coherence_data
+    print(f"Simulando dinâmica de microtúbulos: {simulated_quantum_state}")
+    return simulated_quantum_state

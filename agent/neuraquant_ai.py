@@ -81,5 +81,3 @@ class NeuraquantAIV2:
             logging.error(f"Erro ao salvar resultados: {e}")
 
         logging.info(f"Resultados do Projeto: {self.results}")
-
-# End of NeuraquantAIV2 class
